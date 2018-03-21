@@ -8,6 +8,8 @@
         public int RequiredVehicleType { get; set; }
         public int RouteID { get; set; }
         public string UserID { get; set; }
+        public float GarantiedHours { get; set; }
+        public float GarantiedDays { get; set; }
         public float DifferenceToNextOffer { get; set; }
         public string CreateRouteNumberPriority { get; set; }
         public string CreateContractorPriority { get; set; }
@@ -15,8 +17,10 @@
         public int ContractorPriority { get; set; }
         public Contractor Contractor {get;set;}
 
+        public float DailyContractSum { get { return OperationPrice * GarantiedHours; } }
+        public float YearlyContractValue { get { return DailyContractSum * GarantiedDays; } }
         public Offer() { }
-        public Offer(string referenceNumber, float operationPrice, int routeID, string userID, int routeNumberPriority, int contractorPriority, Contractor contractor, int requiredVehicleType = 0)
+        public Offer(string referenceNumber, float operationPrice, float garantiedHours, float garantiedDays, int routeID, string userID, int routeNumberPriority, int contractorPriority, Contractor contractor, int requiredVehicleType = 0)
         {
             this.OfferReferenceNumber = referenceNumber;
             this.OperationPrice = operationPrice;

@@ -8,7 +8,7 @@ namespace Logic
     {
         List<RouteNumber> routeNumberList;
         List<Contractor> contractorList;
-
+        
         public IOController()
         {
             routeNumberList = new List<RouteNumber>();

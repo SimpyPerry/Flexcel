@@ -59,8 +59,10 @@ namespace DataAccess
                     RouteID = TryParseToIntElseZero(x[1]),
                     OperationPrice = TryParseToFloatElseZero((x[2])),
                     UserID = x[5],
-                    CreateRouteNumberPriority = x[6],
-                    CreateContractorPriority = x[7],
+                    GarantiedHours= TryParseToFloatElseZero((x[6])),
+                    GarantiedDays = TryParseToFloatElseZero((x[7])),
+                    CreateRouteNumberPriority = x[8],
+                    CreateContractorPriority = x[9],
                 });
                 //* var o -> Offer offer
                 foreach (Offer offer in data)
@@ -76,7 +78,7 @@ namespace DataAccess
                         {
                             //* r -> routeNumberID
                             offer.RequiredVehicleType = (listOfRouteNumbers.Find(routeNumberID => routeNumberID.RouteID == offer.RouteID)).RequiredVehicleType;
-                            Offer newOffer = new Offer(offer.OfferReferenceNumber, offer.OperationPrice, offer.RouteID, offer.UserID, offer.RouteNumberPriority, offer.ContractorPriority, contractor, offer.RequiredVehicleType);
+                            Offer newOffer = new Offer(offer.OfferReferenceNumber, offer.OperationPrice,offer.GarantiedHours,offer.GarantiedDays, offer.RouteID, offer.UserID, offer.RouteNumberPriority, offer.ContractorPriority, contractor, offer.RequiredVehicleType);
                             listOfOffers.Add(newOffer);
                         }
                         catch

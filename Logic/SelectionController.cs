@@ -22,7 +22,7 @@ namespace Logic
             sortedRouteNumberList = routeNumberList.OrderBy(x => x.RouteID).ToList();
             foreach (RouteNumber routeNumber in sortedRouteNumberList)
             {
-                routeNumber.offers = routeNumber.offers.OrderBy(x => x.OperationPrice).ThenBy(x => x.RouteNumberPriority).ToList();
+                routeNumber.offers = routeNumber.offers.OrderBy(x => x.YearlyContractValue).ThenBy(x => x.RouteNumberPriority).ToList();
             }
         }
         public void SelectWinners()
